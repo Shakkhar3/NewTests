@@ -1,0 +1,76 @@
+<button type="submit" class="btn btn-primary" (click)="retournerAuChoix()">Retour</button>
+<div class="card center-card" style="width: 18rem;">
+    <div class="card-body">
+        <form>
+          <h3>Inscription au tournois par équipes</h3>
+          <br>
+  <h6>Nom de l'équipe</h6>
+            <div class="form-group">
+              <input type="text" class="form-control" id="nomEquipe" name="nomEquipe" [(ngModel)]="nomEquipe" required>
+            </div>
+            <br>
+  <!-- Boutons radio -->
+  <div class="row">
+  <div>
+    <h6>Tournois Choisi</h6>
+    <label>
+      <input type="radio" name="choix" value="option1" [(ngModel)]="tournoiChoisi" value="LeagueOfLegends"> League Of Legends
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="radio" name="choix" value="option2" [(ngModel)]="tournoiChoisi" value="FIFAPS5"> FIFA PS5
+    </label>
+  </div>
+  <div>
+    <label>
+      <input type="radio" name="choix" value="option3" [(ngModel)]="tournoiChoisi" value="FIFAXBOX"> FIFA XBOX
+    </label>
+  </div>
+</div>
+
+<br>
+
+<h6> Composition de l'équipe</h6>
+  <!-- Liste dynamique des joueurs -->
+  <div *ngFor="let joueur of joueurs; let i = index; trackBy: trackByFn" class="row align-items-center mb-2">
+    <div class="col">
+        <input type="text" class="form-control" id="nomJoueur{{i}}" name="nomJoueur{{i}}" [(ngModel)]="joueur.nom" placeholder="Nom" required>
+    </div>
+    <div class="col">
+        <input type="text" class="form-control" id="prenomJoueur{{i}}" name="prenomJoueur{{i}}" [(ngModel)]="joueur.prenom" placeholder="Prénom" required>
+    </div>
+    <div class="col">
+      <input type="date" class="form-control" id="dobJoueur{{i}}" name="dobJoueur{{i}}" [(ngModel)]="joueur.dob" placeholder="Date de naissance" required>
+  </div>
+    <div class="col">
+        <input type="text" class="form-control" id="pseudoJoueur{{i}}" name="pseudoJoueur{{i}}" [(ngModel)]="joueur.pseudo" placeholder="Pseudo" required>
+    </div>
+    <div class="col-auto">
+        <button type="button" class="btn btn-primary" (click)="supprimerJoueur(i)">Supprimer</button>
+    </div>
+</div>
+
+  <br>
+
+  <!-- Bouton pour ajouter un joueur -->
+  <button type="button" class="btn btn-primary" (click)="ajouterJoueur()">Ajouter un joueur</button>
+  <br>
+  <br>
+          <h6>Nom du capitaine de l'équipe</h6>
+          <div class="row align-items-center mb-2">
+          <div class="col">
+            <input type="text" placeholder="Nom" class="form-control" id="nomEquipe" name="nomCapitaine" [(ngModel)]="nomCapitaine" required>
+          </div>
+          <div class="col">
+            <input type="text" placeholder="Prénom" class="form-control" id="nomEquipe" name="prenomCapitaine" [(ngModel)]="prenomCapitaine" required>
+          </div>
+          </div>
+          <br>
+  <!-- Bouton de soumission -->
+            <br>
+            <button type="submit" (click)="submitForm()" class="btn btn-primary">Submit</button>
+          </form>
+
+    </div>
+  </div>
